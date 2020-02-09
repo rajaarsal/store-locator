@@ -26,7 +26,7 @@ const StoresList = () => {
           const { opening_hours_today: openingHours } = store;
           return (
             <div className="store" key={i}>
-              <div class="storeNumber">{i + 1}</div>
+              <div className="storeNumber">{i + 1}</div>
               <div clasName="storeInfo">
                 <h1>{store.name}</h1>
                 <p>City: {store.city}</p>
