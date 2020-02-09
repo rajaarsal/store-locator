@@ -7,8 +7,8 @@ const StoreDetails = () => {
   const [storeDetails, setStoreDetails] = useState([]);
   const fetchStoreDetails = async () => {
     const url = `https://store-locator-api.allsaints.com/shops/${storeId}`;
-    const fetchCountryStores = await fetch(url);
-    const response = await fetchCountryStores.json();
+    const storesData = await fetch(url);
+    const response = await storesData.json();
     setStoreDetails(response);
   };
 
@@ -22,28 +22,27 @@ const StoreDetails = () => {
   return (
     storeDetails && (
       <div className="storeDetail">
-        <h1>{storeDetails.name}</h1>
-        <h4>Address</h4>
-        <p>{storeDetails.address_line1}</p>
-        <p>{storeDetails.address_line2}</p>
-        <p>{storeDetails.address_line3}</p>
-        <h4>Contact Number</h4>
-        <p>{storeDetails.phone_number}</p>
-        <h4>Opening Hours:</h4>
-        <div className="openingHours">
+        <div class="storeDetail_info">
+          <h1>{storeDetails.name}</h1>
+          <p>{storeDetails.address_line1}</p>
+          <p>{storeDetails.address_line2}</p>
+          <p>{storeDetails.address_line3}</p>
+          <p>{storeDetails.phone_number}</p>
+        </div>
+        <div className="storeDetail_openingHours">
+          <h1>Opening Hours</h1>
           {openingHours &&
             Object.entries(openingHours).map(([key, value], index) => {
               return (
-                <div key={key}>
+                <div key={key} className="storeDetail_openingHours-times">
                   <p className="days">{key}</p>
                   {value.map((item, i) => {
                     const { open, close } = item;
                     return (
-                      <p key={i}>
-                        Open: {open}
-                        <br />
-                        Close: {close}
-                      </p>
+                      <span
+                        key={i}
+                        className="time"
+                      >{`${open} - ${close}`}</span>
                     );
                   })}
                 </div>

@@ -9,8 +9,8 @@ const StoresList = () => {
     let url = `https://store-locator-api.allsaints.com/shops`;
     url =
       city !== undefined ? `${url}?city=${city}` : `${url}?country=${country}`;
-    const fetchCountryStores = await fetch(url);
-    const response = await fetchCountryStores.json();
+    const storesData = await fetch(url);
+    const response = await storesData.json();
     setStores(response);
   };
   useEffect(() => {
@@ -26,20 +26,24 @@ const StoresList = () => {
           const { opening_hours_today: openingHours } = store;
           return (
             <div className="store" key={i}>
-              <Link to={`/shop/store-detail-${store.uuid}`}>
+              <div class="storeNumber">{i + 1}</div>
+              <div clasName="storeInfo">
                 <h1>{store.name}</h1>
                 <p>City: {store.city}</p>
-                <p>Opening Hours:</p>
-                {openingHours.map((hours, index) => {
-                  const { open, close } = hours;
-                  return (
-                    <div className="timings" key={index}>
-                      <p>Open: {open}</p>
-                      <p>Close: {close}</p>
-                    </div>
-                  );
-                })}
-              </Link>
+                <p>
+                  Opening Hours:
+                  {openingHours.map((hours, index) => {
+                    const { open, close } = hours;
+                    return <span key={index}>{` ${open} - ${close}`}</span>;
+                  })}
+                </p>
+                <Link
+                  to={`/shop/store-detail-${store.uuid}`}
+                  className="moreInfo"
+                >
+                  More Info
+                </Link>
+              </div>
             </div>
           );
         })}

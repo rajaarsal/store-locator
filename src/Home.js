@@ -15,8 +15,7 @@ const Home = () => {
   const { cities } = selectCitiesList;
   return (
     <>
-      <h1>Store Locator</h1>
-      <h4>Select Country</h4>
+      <h1>Find your nearest store</h1>
       <select
         value={selectCountry}
         onChange={onChangeHandler}
@@ -32,8 +31,6 @@ const Home = () => {
             </option>
           ))}
       </select>
-      <br />
-      <h4>Select City</h4>
       <select
         value={selectCity}
         onChange={onChangeHandler}
@@ -48,9 +45,11 @@ const Home = () => {
             </option>
           ))}
       </select>
-      <br />
-      <br />
-      <button onClick={findStoreClickHandler} disabled={!isCountrySelected}>
+      <button
+        onClick={findStoreClickHandler}
+        disabled={!isCountrySelected}
+        className="findStoreBtn"
+      >
         Find Store
       </button>
     </>

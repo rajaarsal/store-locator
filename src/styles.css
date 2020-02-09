@@ -3,11 +3,43 @@
 }
 
 h1 {
-  font-size: 25px;
+  font-size: 18px;
+  margin-top: 3px;
+}
+
+p {
+  margin: 0;
+  line-height: 24px;
 }
 
 select {
   min-width: 200px;
+  margin-right: 20px;
+  height: 40px;
+  font-size: 17px;
+}
+
+select:disabled {
+  cursor: not-allowed;
+}
+
+.findStoreBtn {
+  width: 200px;
+  height: 40px;
+  display: felx;
+  align-items: center;
+  justify-content: center;
+  background: #40a9f3;
+  border: #fff;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.findStoreBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .app {
@@ -41,34 +73,61 @@ nav a:hover {
 }
 
 .storeContainer .store {
-  flex: 0 0 24%;
+  flex: 0 0 32%;
   margin: 0.5%;
   border: 1px solid grey;
   margin-bottom: 0.5%;
   border-radius: 10px;
+  display: flex;
+  padding: 15px;
 }
 
-.storeContainer a {
+.storeNumber {
+  height: 30px;
+  width: 30px;
+  background: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  margin-right: 15px;
+}
+
+.storeContainer .moreInfo {
   color: #000;
+  display: inline-block;
   text-decoration: none;
-  display: block;
+  margin-top: 15px;
+  color: #597978;
+  text-decoration: underline;
+}
+
+.storeDetail {
+  display: flex;
+  max-width: 700px;
+  margin: 0 auto;
+  background: #eee;
   padding: 15px;
-  height: 100%;
   border-radius: 10px;
 }
 
-.storeContainer a:hover {
-  background: #ddd;
+.storeDetail_info,
+.storeDetail_openingHours {
+  flex: 1 1 50%;
 }
 
-.openingHours {
+.storeDetail_info {
+  flex: 0 1 80%;
+}
+
+.storeDetail_openingHours-times {
   display: flex;
   justify-content: space-between;
 }
 
 .days {
   font-weight: bold;
-  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -78,16 +137,20 @@ nav a:hover {
     width: 100%;
   }
 
+  select {
+    margin-bottom: 10px;
+  }
+
   .storeContainer .store {
     flex: 0 0 100%;
     margin-bottom: 10px;
   }
 
-  .days {
-    text-align: left;
+  .storeDetail {
+    flex-direction: column;
   }
 
-  .openingHours {
-    display: block;
+  .storeDetail_openingHours {
+    margin-top: 15px;
   }
 }
