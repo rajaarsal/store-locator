@@ -1,0 +1,93 @@
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+select {
+  min-width: 200px;
+}
+
+.app {
+  /* border: 1px solid black; */
+  min-width: 1000px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+nav {
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+nav a {
+  padding: 10px 5px;
+  text-decoration: none;
+  color: #000;
+}
+
+nav a:hover {
+  background: #000;
+  color: #fff;
+}
+
+.storeContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.storeContainer .store {
+  flex: 0 0 24%;
+  margin: 0.5%;
+  border: 1px solid grey;
+  margin-bottom: 0.5%;
+  border-radius: 10px;
+}
+
+.storeContainer a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  padding: 15px;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.storeContainer a:hover {
+  background: #ddd;
+}
+
+.openingHours {
+  display: flex;
+  justify-content: space-between;
+}
+
+.days {
+  font-weight: bold;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .app {
+    min-width: inherit;
+    max-width: inherit;
+    width: 100%;
+  }
+
+  .storeContainer .store {
+    flex: 0 0 100%;
+    margin-bottom: 10px;
+  }
+
+  .days {
+    text-align: left;
+  }
+
+  .openingHours {
+    display: block;
+  }
+}
