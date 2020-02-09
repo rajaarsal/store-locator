@@ -23,6 +23,44 @@ select:disabled {
   cursor: not-allowed;
 }
 
+@keyframes loading {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingOverlay {
+  position: fixed;
+  height: 100%;
+  min-width: 1000px;
+  max-width: 1200px;
+  width: 100%;
+  background-color: #000;
+  opacity: 0.25;
+}
+
+.loadingOverlay:before {
+  content: "";
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 6px solid transparent;
+  border-left-color: #fff;
+  border-top-color: #fff;
+  animation: loading 1500ms infinite linear;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+}
+
 .findStoreBtn {
   width: 200px;
   height: 40px;
@@ -131,7 +169,8 @@ nav a:hover {
 }
 
 @media screen and (max-width: 768px) {
-  .app {
+  .app,
+  .loadingOverlay {
     min-width: inherit;
     max-width: inherit;
     width: 100%;

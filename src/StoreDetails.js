@@ -5,24 +5,24 @@ const StoreDetails = () => {
   const params = useParams();
   const { storeId } = params;
   const [storeDetails, setStoreDetails] = useState([]);
-  const fetchStoreDetails = async () => {
-    const url = `https://store-locator-api.allsaints.com/shops/${storeId}`;
-    const storesData = await fetch(url);
-    const response = await storesData.json();
-    setStoreDetails(response);
-  };
 
   useEffect(() => {
+    const fetchStoreDetails = async () => {
+      const url = `https://store-locator-api.allsaints.com/shops/${storeId}`;
+      const storesData = await fetch(url);
+      const response = await storesData.json();
+      setStoreDetails(response);
+    };
     fetchStoreDetails();
   }, [storeId]);
   const { opening_hours: openingHours } = storeDetails;
   if (storeDetails.length === 0) {
-    return null;
+    return <div className="loadingOverlay" />;
   }
   return (
     storeDetails && (
       <div className="storeDetail">
-        <div class="storeDetail_info">
+        <div className="storeDetail_info">
           <h1>{storeDetails.name}</h1>
           <p>{storeDetails.address_line1}</p>
           <p>{storeDetails.address_line2}</p>
